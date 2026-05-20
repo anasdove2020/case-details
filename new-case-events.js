@@ -138,6 +138,16 @@ CaseDetail.Events = {
         }
 
         if (CaseDetail.Stage.isQuote(ctx)) {
+
+            if (CaseDetail.DueDate.isNotBlank(ctx)) {
+
+                CaseDetail.StatusReason.setDrawingInProgress(ctx);
+                CaseDetail.State.DueDate = CaseDetail.DueDate.get(ctx);
+                CaseDetail.Helper.save(ctx, () => CaseDetail.Stage.nextStageFromQuoteToDraw(ctx));
+                return;
+                
+            }
+
             CaseDetail.Helper.saveEntity(ctx);
             CaseDetail.State.DueDate = CaseDetail.DueDate.get(ctx);
             return;

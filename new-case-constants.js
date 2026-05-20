@@ -16,14 +16,12 @@ CaseDetail.Constants = {
     Stage: {
         Enquiry: "Enquiry",
         Quote: "Quote",
-        Order: "Order",
         Draw: "Draw",
         EndOfLife: "End Of Life"
     },
     StatusReason: {
         New: 1,
         QuoteSent: 2,
-        OrderReceived: 3,
         DrawInProgress: 4,
         Drawn: 675430001,
         NotWon: 100000001

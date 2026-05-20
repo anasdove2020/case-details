@@ -1,4 +1,4 @@
-// VERSION 1.1.37 (17 May 2026)
+// VERSION 1.1.42 (17 May 2026)
 
 debugger;
 var CaseDetail = CaseDetail || {};

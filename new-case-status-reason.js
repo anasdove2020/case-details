@@ -12,9 +12,6 @@ CaseDetail.StatusReason = {
     isQuoteSent: function(ctx) {
         return CaseDetail.StatusReason.get(ctx) === CaseDetail.Constants.StatusReason.QuoteSent;
     },
-    isOrderReceived: function(ctx) {
-        return CaseDetail.StatusReason.get(ctx) === CaseDetail.Constants.StatusReason.OrderReceived;
-    },
     isDrawingInProgress: function(ctx) {
         return CaseDetail.StatusReason.get(ctx) === CaseDetail.Constants.StatusReason.DrawInProgress;
     },
@@ -29,9 +26,6 @@ CaseDetail.StatusReason = {
     },
     setQuoteSent: function(ctx) {
         CaseDetail.StatusReason.set(ctx, CaseDetail.Constants.StatusReason.QuoteSent);
-    },
-    setOrderReceived: function(ctx) {
-        CaseDetail.StatusReason.set(ctx, CaseDetail.Constants.StatusReason.OrderReceived);
     },
     setDrawingInProgress: function(ctx) {
         CaseDetail.StatusReason.set(ctx, CaseDetail.Constants.StatusReason.DrawInProgress);
