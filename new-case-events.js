@@ -8,28 +8,39 @@ CaseDetail.Events = {
         CaseDetail.Helper.clearFieldNotification(ctx, CaseDetail.Constants.Field.QuoteNumber);
 
         if (CaseDetail.Stage.isEnquiry(ctx)) {
-            CaseDetail.DueDate.setNotRequired(ctx);
-            CaseDetail.State.QuoteNumber = CaseDetail.QuoteNumber.get(ctx);
+
             if (CaseDetail.QuoteNumber.isNotBlank(ctx)) {
+
                 CaseDetail.StatusReason.setQuoteSent(ctx);
-                CaseDetail.Helper.saveEntity(ctx);
-            } else {
-                CaseDetail.StatusReason.setNew(ctx);
-                CaseDetail.Helper.saveEntity(ctx);
+                CaseDetail.State.QuoteNumber = CaseDetail.QuoteNumber.get(ctx);
+                CaseDetail.Helper.save(ctx, () => CaseDetail.Stage.nextStageFromEnquiryToQuote(ctx));
+                return;
+
             }
-        } else {
+
+            CaseDetail.Helper.saveEntity(ctx);
+            CaseDetail.StatusReason.setNew(ctx);
+            CaseDetail.State.QuoteNumber = CaseDetail.QuoteNumber.get(ctx);
+            return;
+        }
+
+        if (CaseDetail.Stage.isQuote(ctx) || CaseDetail.Stage.isDraw(ctx) || CaseDetail.Stage.isEndOfLife(ctx)) {
+
             if (CaseDetail.QuoteNumber.isBlank(ctx)) {
+
                 CaseDetail.QuoteNumber.set(ctx, CaseDetail.State.QuoteNumber);
                 const errorMessage = `Cannot be blank during the ${CaseDetail.Stage.getName(ctx)} stage.`;
                 CaseDetail.Helper.setFieldNotification(ctx, CaseDetail.Constants.Field.QuoteNumber, errorMessage);
-
                 setTimeout(() => {
                     CaseDetail.Helper.clearFieldNotification(ctx, CaseDetail.Constants.Field.QuoteNumber);
                 }, 5000);
-            } else {
-                CaseDetail.Helper.saveEntity(ctx);
-                CaseDetail.State.QuoteNumber = CaseDetail.QuoteNumber.get(ctx);
+                return;
+
             }
+
+            CaseDetail.Helper.saveEntity(ctx);
+            CaseDetail.State.QuoteNumber = CaseDetail.QuoteNumber.get(ctx);
+            return;
         }
     },
 
@@ -145,7 +156,7 @@ CaseDetail.Events = {
                 CaseDetail.State.DueDate = CaseDetail.DueDate.get(ctx);
                 CaseDetail.Helper.save(ctx, () => CaseDetail.Stage.nextStageFromQuoteToDraw(ctx));
                 return;
-                
+
             }
 
             CaseDetail.Helper.saveEntity(ctx);
