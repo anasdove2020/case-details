@@ -18,6 +18,18 @@ CaseDetail.Events = {
 
             }
 
+            if (CaseDetail.QuoteNumber.isBlank(ctx) && CaseDetail.PurchaseOrderNumber.isNotBlank(ctx)) {
+
+                CaseDetail.QuoteNumber.set(ctx, CaseDetail.State.QuoteNumber);
+                const errorMessage = `Cannot be blank when Purchase Order Number has any value.`;
+                CaseDetail.Helper.setFieldNotification(ctx, CaseDetail.Constants.Field.QuoteNumber, errorMessage);
+                setTimeout(() => {
+                    CaseDetail.Helper.clearFieldNotification(ctx, CaseDetail.Constants.Field.QuoteNumber);
+                }, 5000);
+                return;
+
+            }
+
             CaseDetail.Helper.saveEntity(ctx);
             CaseDetail.StatusReason.setNew(ctx);
             CaseDetail.State.QuoteNumber = CaseDetail.QuoteNumber.get(ctx);
@@ -50,14 +62,28 @@ CaseDetail.Events = {
 
         if (CaseDetail.Stage.isEnquiry(ctx) || CaseDetail.Stage.isQuote(ctx)) {
 
-            if (CaseDetail.PurchaseOrderNumber.isBlank(ctx) && CaseDetail.OrderNumber.isNotBlank(ctx)) {
+            if (CaseDetail.PurchaseOrderNumber.isNotBlank(ctx) && CaseDetail.QuoteNumber.isBlank(ctx)) {
+
                 CaseDetail.PurchaseOrderNumber.set(ctx, CaseDetail.State.PurchaseOrderNumber);
-                const errorMessage = `Cannot be blank when an Order Number has been entered.`;
+                const errorMessage = `cannot have any value when Quote Number is blank.`;
                 CaseDetail.Helper.setFieldNotification(ctx, CaseDetail.Constants.Field.PurchaseOrderNumber, errorMessage);
                 setTimeout(() => {
                     CaseDetail.Helper.clearFieldNotification(ctx, CaseDetail.Constants.Field.PurchaseOrderNumber);
                 }, 5000);
                 return;
+
+            }
+
+            if (CaseDetail.PurchaseOrderNumber.isBlank(ctx) && CaseDetail.OrderNumber.isNotBlank(ctx)) {
+
+                CaseDetail.PurchaseOrderNumber.set(ctx, CaseDetail.State.PurchaseOrderNumber);
+                const errorMessage = `Cannot be blank when an Order Number has any value.`;
+                CaseDetail.Helper.setFieldNotification(ctx, CaseDetail.Constants.Field.PurchaseOrderNumber, errorMessage);
+                setTimeout(() => {
+                    CaseDetail.Helper.clearFieldNotification(ctx, CaseDetail.Constants.Field.PurchaseOrderNumber);
+                }, 5000);
+                return;
+
             }
 
             CaseDetail.Helper.saveEntity(ctx);
@@ -91,14 +117,28 @@ CaseDetail.Events = {
 
         if (CaseDetail.Stage.isEnquiry(ctx) || CaseDetail.Stage.isQuote(ctx)) {
 
-            if (CaseDetail.OrderNumber.isBlank(ctx) && CaseDetail.DueDate.isNotBlank(ctx)) {
+            if (CaseDetail.OrderNumber.isNotBlank(ctx) && CaseDetail.PurchaseOrderNumber.isBlank(ctx)) {
+
                 CaseDetail.OrderNumber.set(ctx, CaseDetail.State.OrderNumber);
-                const errorMessage = `Cannot be blank when Due Date has been entered.`;
+                const errorMessage = `cannot have any value when Purchase Order Number is blank.`;
                 CaseDetail.Helper.setFieldNotification(ctx, CaseDetail.Constants.Field.OrderNumber, errorMessage);
                 setTimeout(() => {
                     CaseDetail.Helper.clearFieldNotification(ctx, CaseDetail.Constants.Field.OrderNumber);
                 }, 5000);
                 return;
+
+            }
+
+            if (CaseDetail.OrderNumber.isBlank(ctx) && CaseDetail.DueDate.isNotBlank(ctx)) {
+
+                CaseDetail.OrderNumber.set(ctx, CaseDetail.State.OrderNumber);
+                const errorMessage = `Cannot be blank when Due Date has any value.`;
+                CaseDetail.Helper.setFieldNotification(ctx, CaseDetail.Constants.Field.OrderNumber, errorMessage);
+                setTimeout(() => {
+                    CaseDetail.Helper.clearFieldNotification(ctx, CaseDetail.Constants.Field.OrderNumber);
+                }, 5000);
+                return;
+
             }
 
             CaseDetail.Helper.saveEntity(ctx);
@@ -131,12 +171,37 @@ CaseDetail.Events = {
         CaseDetail.Helper.clearFieldNotification(ctx, CaseDetail.Constants.Field.DueDate);
 
         if (CaseDetail.Stage.isEnquiry(ctx)) {
+
+            if (CaseDetail.DueDate.isNotBlank(ctx) && CaseDetail.OrderNumber.isBlank(ctx)) {
+
+                CaseDetail.DueDate.set(ctx, CaseDetail.State.DueDate);
+                const errorMessage = `cannot have any value when Order Number is blank.`;
+                CaseDetail.Helper.setFieldNotification(ctx, CaseDetail.Constants.Field.DueDate, errorMessage);
+                setTimeout(() => {
+                    CaseDetail.Helper.clearFieldNotification(ctx, CaseDetail.Constants.Field.DueDate);
+                }, 5000);
+                return;
+
+            }
+
             CaseDetail.Helper.saveEntity(ctx);
             CaseDetail.State.DueDate = CaseDetail.DueDate.get(ctx);
             return;
         }
 
         if (CaseDetail.Stage.isQuote(ctx)) {
+
+            if (CaseDetail.DueDate.isNotBlank(ctx) && CaseDetail.OrderNumber.isBlank(ctx)) {
+
+                CaseDetail.DueDate.set(ctx, CaseDetail.State.DueDate);
+                const errorMessage = `cannot have any value when Order Number is blank.`;
+                CaseDetail.Helper.setFieldNotification(ctx, CaseDetail.Constants.Field.DueDate, errorMessage);
+                setTimeout(() => {
+                    CaseDetail.Helper.clearFieldNotification(ctx, CaseDetail.Constants.Field.DueDate);
+                }, 5000);
+                return;
+
+            }
 
             if (CaseDetail.DueDate.isNotBlank(ctx)) {
 
