@@ -48,13 +48,7 @@ CaseDetail.Events = {
         var ctx = executionContext.getFormContext();
         CaseDetail.Helper.clearFieldNotification(ctx, CaseDetail.Constants.Field.PurchaseOrderNumber);
 
-        if (CaseDetail.Stage.isEnquiry(ctx)) {
-            CaseDetail.Helper.saveEntity(ctx);
-            CaseDetail.State.PurchaseOrderNumber = CaseDetail.PurchaseOrderNumber.get(ctx);
-            return;
-        }
-
-        if (CaseDetail.Stage.isQuote(ctx)) {
+        if (CaseDetail.Stage.isEnquiry(ctx) || CaseDetail.Stage.isQuote(ctx)) {
 
             if (CaseDetail.PurchaseOrderNumber.isBlank(ctx) && CaseDetail.OrderNumber.isNotBlank(ctx)) {
                 CaseDetail.PurchaseOrderNumber.set(ctx, CaseDetail.State.PurchaseOrderNumber);
@@ -95,13 +89,7 @@ CaseDetail.Events = {
         var ctx = executionContext.getFormContext();
         CaseDetail.Helper.clearFieldNotification(ctx, CaseDetail.Constants.Field.OrderNumber);
 
-        if (CaseDetail.Stage.isEnquiry(ctx)) {
-            CaseDetail.Helper.saveEntity(ctx);
-            CaseDetail.State.OrderNumber = CaseDetail.OrderNumber.get(ctx);
-            return;
-        }
-
-        if (CaseDetail.Stage.isQuote(ctx)) {
+        if (CaseDetail.Stage.isEnquiry(ctx) || CaseDetail.Stage.isQuote(ctx)) {
 
             if (CaseDetail.OrderNumber.isBlank(ctx) && CaseDetail.DueDate.isNotBlank(ctx)) {
                 CaseDetail.OrderNumber.set(ctx, CaseDetail.State.OrderNumber);
