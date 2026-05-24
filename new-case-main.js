@@ -1,4 +1,4 @@
-// VERSION 1.1.48 (17 May 2026)
+// VERSION 1.1.51 (17 May 2026)
 
 debugger;
 var CaseDetail = CaseDetail || {};
@@ -24,4 +24,8 @@ window.orderNumberOnChange = function(executionContext) {
 
 window.dueDateOnChange = function(executionContext) {
     CaseDetail.Events.dueDateOnChange(executionContext);
+}
+
+window.assignToOnChange = function (executionContext) {
+    CaseDetail.Events.assignToOnChange(executionContext);
 }

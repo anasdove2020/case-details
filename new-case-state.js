@@ -8,6 +8,7 @@ CaseDetail.State = {
     OrderNumber: null,
     StatusReason: 0,
     DueDate: null,
+    AssignTo: 0,
 
     initialize: function(ctx) {
         CaseDetail.State.QuoteNumber = CaseDetail.QuoteNumber.get(ctx);
@@ -15,5 +16,6 @@ CaseDetail.State = {
         CaseDetail.State.OrderNumber = CaseDetail.OrderNumber.get(ctx);
         CaseDetail.State.StatusReason = CaseDetail.StatusReason.get(ctx);
         CaseDetail.State.DueDate = CaseDetail.DueDate.get(ctx);
+        CaseDetail.State.AssignTo = CaseDetail.AssignTo.get(ctx);
     }
 };
