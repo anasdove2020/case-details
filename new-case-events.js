@@ -239,23 +239,15 @@ CaseDetail.Events = {
 
     assignToOnChange: function (executionContext) {
         var ctx = executionContext.getFormContext();
-        CaseDetail.Helper.clearFieldNotification(ctx, CaseDetail.Constants.Field.AssignTo);
 
-        if (CaseDetail.AssignTo.isBlank(ctx)) {
+        if (CaseDetail.AssignTo.isNotBlank(ctx)) {
 
-            CaseDetail.AssignTo.set(ctx, CaseDetail.State.AssignTo);
-            const errorMessage = `Required fields must be filled in.`;
-            CaseDetail.Helper.setFieldNotification(ctx, CaseDetail.Constants.Field.AssignTo, errorMessage);
-            setTimeout(() => {
-                CaseDetail.Helper.clearFieldNotification(ctx, CaseDetail.Constants.Field.AssignTo);
-            }, 5000);
+            CaseDetail.Helper.saveEntity(ctx);
+            CaseDetail.State.AssignTo = CaseDetail.AssignTo.get(ctx);
             return;
 
         }
-
-        CaseDetail.Helper.saveEntity(ctx);
-        CaseDetail.State.AssignTo = CaseDetail.AssignTo.get(ctx);
-        return;
+        
     },
 
 };
