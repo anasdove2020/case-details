@@ -1,4 +1,4 @@
-// VERSION 1.1.0 (17 May 2026)
+// VERSION 1.1.0 (1 June 2026)
 
 var CaseDetail = CaseDetail || {};
 
@@ -11,7 +11,7 @@ CaseDetail.Events = {
 
             if (CaseDetail.QuoteNumber.isNotBlank(ctx)) {
 
-                CaseDetail.StatusReason.setQuoteSent(ctx);
+                CaseDetail.StatusReason.setQuote(ctx);
                 CaseDetail.State.QuoteNumber = CaseDetail.QuoteNumber.get(ctx);
                 CaseDetail.Helper.save(ctx, () => CaseDetail.Stage.nextStageFromEnquiryToQuote(ctx));
                 return;
@@ -31,7 +31,7 @@ CaseDetail.Events = {
             }
 
             CaseDetail.Helper.saveEntity(ctx);
-            CaseDetail.StatusReason.setNew(ctx);
+            CaseDetail.StatusReason.setEnquiry(ctx);
             CaseDetail.State.QuoteNumber = CaseDetail.QuoteNumber.get(ctx);
             return;
         }
@@ -205,7 +205,7 @@ CaseDetail.Events = {
 
             if (CaseDetail.DueDate.isNotBlank(ctx)) {
 
-                CaseDetail.StatusReason.setDrawingInProgress(ctx);
+                CaseDetail.StatusReason.setDraw(ctx);
                 CaseDetail.State.DueDate = CaseDetail.DueDate.get(ctx);
                 CaseDetail.Helper.save(ctx, () => CaseDetail.Stage.nextStageFromQuoteToDraw(ctx));
                 return;

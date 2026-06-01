@@ -1,4 +1,4 @@
-// VERSION 1.1.0 (17 May 2026)
+// VERSION 1.1.0 (1 June 2026)
 
 var CaseDetail = CaseDetail || {};
 
@@ -37,19 +37,19 @@ CaseDetail.Stage = {
 
         switch(stageName) {
             case CaseDetail.Constants.Stage.Enquiry:
-                CaseDetail.StatusReason.setNew(ctx);
+                CaseDetail.StatusReason.setEnquiry(ctx);
                 break;
 
             case CaseDetail.Constants.Stage.Quote:
-                CaseDetail.StatusReason.setQuoteSent(ctx);
+                CaseDetail.StatusReason.setQuote(ctx);
                 break;
 
             case CaseDetail.Constants.Stage.Draw:
-                CaseDetail.StatusReason.setDrawingInProgress(ctx);
+                CaseDetail.StatusReason.setDraw(ctx);
                 break;
 
             case CaseDetail.Constants.Stage.EndOfLife:
-                CaseDetail.StatusReason.setDrawn(ctx);
+                CaseDetail.StatusReason.setEndOfLife(ctx);
                 break;
         }
 

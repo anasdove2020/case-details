@@ -1,4 +1,4 @@
-// VERSION 1.1.0 (17 May 2026)
+// VERSION 1.1.0 (1 June 2026)
 
 var CaseDetail = CaseDetail || {};
 
@@ -6,32 +6,32 @@ CaseDetail.StatusReason = {
     get: function(ctx) {
         return CaseDetail.Helper.getFieldValue(ctx, CaseDetail.Constants.Field.StatusReason);
     },
-    isNew: function(ctx) {
-        return CaseDetail.StatusReason.get(ctx) === CaseDetail.Constants.StatusReason.New;
+    isEnquiry: function(ctx) {
+        return CaseDetail.StatusReason.get(ctx) === CaseDetail.Constants.StatusReason.Enquiry;
     },
-    isQuoteSent: function(ctx) {
-        return CaseDetail.StatusReason.get(ctx) === CaseDetail.Constants.StatusReason.QuoteSent;
+    isQuote: function(ctx) {
+        return CaseDetail.StatusReason.get(ctx) === CaseDetail.Constants.StatusReason.Quote;
     },
-    isDrawingInProgress: function(ctx) {
-        return CaseDetail.StatusReason.get(ctx) === CaseDetail.Constants.StatusReason.DrawInProgress;
+    isDraw: function(ctx) {
+        return CaseDetail.StatusReason.get(ctx) === CaseDetail.Constants.StatusReason.Draw;
     },
-    isDrawn: function(ctx) {
-        return CaseDetail.StatusReason.get(ctx) === CaseDetail.Constants.StatusReason.Drawn;
+    isEndOfLife: function(ctx) {
+        return CaseDetail.StatusReason.get(ctx) === CaseDetail.Constants.StatusReason.EndOfLife;
     },
     set: function(ctx, value) {
         CaseDetail.Helper.setFieldValue(ctx, CaseDetail.Constants.Field.StatusReason, value);
     },
-    setNew: function(ctx) {
-        CaseDetail.StatusReason.set(ctx, CaseDetail.Constants.StatusReason.New);
+    setEnquiry: function(ctx) {
+        CaseDetail.StatusReason.set(ctx, CaseDetail.Constants.StatusReason.Enquiry);
     },
-    setQuoteSent: function(ctx) {
-        CaseDetail.StatusReason.set(ctx, CaseDetail.Constants.StatusReason.QuoteSent);
+    setQuote: function(ctx) {
+        CaseDetail.StatusReason.set(ctx, CaseDetail.Constants.StatusReason.Quote);
     },
-    setDrawingInProgress: function(ctx) {
-        CaseDetail.StatusReason.set(ctx, CaseDetail.Constants.StatusReason.DrawInProgress);
+    setDraw: function(ctx) {
+        CaseDetail.StatusReason.set(ctx, CaseDetail.Constants.StatusReason.Draw);
     },
-    setDrawn: function(ctx) {
-        CaseDetail.StatusReason.set(ctx, CaseDetail.Constants.StatusReason.Drawn);
+    setEndOfLife: function(ctx) {
+        CaseDetail.StatusReason.set(ctx, CaseDetail.Constants.StatusReason.EndOfLife);
     },
     setRequired: function(ctx) {
         CaseDetail.Helper.setFieldRequired(ctx, CaseDetail.Constants.Field.StatusReason);

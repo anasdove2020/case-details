@@ -1,4 +1,4 @@
-// VERSION 1.1.0 (17 May 2026)
+// VERSION 1.1.0 (1 June 2026)
 
 var CaseDetail = CaseDetail || {};
 
@@ -20,11 +20,10 @@ CaseDetail.Constants = {
         EndOfLife: "End Of Life"
     },
     StatusReason: {
-        New: 1,
-        QuoteSent: 2,
-        DrawInProgress: 4,
-        Drawn: 675430001,
-        NotWon: 100000001
+        Enquiry: 1,
+        Quote: 2,
+        Draw: 4,
+        EndOfLife: 675430001
     },
     Teams: {
         SalesTeamName: "Plate And Steel Sales Team"
