@@ -1,4 +1,4 @@
-// VERSION 1.1.52 (17 May 2026)
+// VERSION 1.1.53 (17 May 2026)
 
 debugger;
 var CaseDetail = CaseDetail || {};
@@ -28,4 +28,8 @@ window.dueDateOnChange = function(executionContext) {
 
 window.assignToOnChange = function (executionContext) {
     CaseDetail.Events.assignToOnChange(executionContext);
+}
+
+window.generalInformationOnChange = function (executionContext) {
+    CaseDetail.Events.generalInformationOnChange(executionContext);
 }

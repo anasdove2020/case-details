@@ -250,4 +250,11 @@ CaseDetail.Events = {
         
     },
 
+    generalInformationOnChange: function (executionContext) {
+
+        var ctx = executionContext.getFormContext();
+        CaseDetail.Helper.saveEntity(ctx);
+
+    },
+
 };
